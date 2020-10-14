@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_015354) do
+ActiveRecord::Schema.define(version: 2020_10_14_031034) do
+
+  create_table "aircrafts", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.integer "service_start"
+    t.integer "units_build"
+    t.decimal "unit_price"
+    t.integer "origin_country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["origin_country_id"], name: "index_aircrafts_on_origin_country_id"
+  end
 
   create_table "origin_countries", force: :cascade do |t|
     t.string "name"
@@ -18,4 +30,5 @@ ActiveRecord::Schema.define(version: 2020_10_14_015354) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "aircrafts", "origin_countries"
 end
