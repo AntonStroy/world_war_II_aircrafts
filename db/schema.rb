@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_031034) do
+ActiveRecord::Schema.define(version: 2020_10_14_045201) do
+
+  create_table "aircraft_subtypes", force: :cascade do |t|
+    t.integer "aircraft_id", null: false
+    t.integer "subtype_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["aircraft_id"], name: "index_aircraft_subtypes_on_aircraft_id"
+    t.index ["subtype_id"], name: "index_aircraft_subtypes_on_subtype_id"
+  end
 
   create_table "aircrafts", force: :cascade do |t|
     t.string "name"
@@ -30,5 +39,13 @@ ActiveRecord::Schema.define(version: 2020_10_14_031034) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "subtypes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "aircraft_subtypes", "aircrafts"
+  add_foreign_key "aircraft_subtypes", "subtypes"
   add_foreign_key "aircrafts", "origin_countries"
 end
