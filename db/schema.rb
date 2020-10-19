@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_051210) do
+ActiveRecord::Schema.define(version: 2020_10_19_200151) do
 
   create_table "aircraft_operators", force: :cascade do |t|
     t.integer "aircraft_id", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_051210) do
 
   create_table "aircrafts", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "aircraft_type"
     t.integer "service_start"
     t.integer "units_build"
     t.decimal "unit_price"
