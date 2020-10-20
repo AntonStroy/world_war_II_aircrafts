@@ -25,12 +25,10 @@ aircrafts.each do |aircraft|
   if origin_country&.valid?
     create_aircraft = origin_country.aircrafts.create(
       name:          aircraft["Name"],
-      type:          aircraft["Aircraft_Type"],
-      subtype:       "",
+      aircraft_type: aircraft["Aircraft_Type"],
       service_start: aircraft["Year_Service"],
       units_build:   Faker::Number.between(from: 1, to: 3500),
-      unit_price:    Faker::Commerce.price(range: 8000..400_000.0),
-      operaotr:      ""
+      unit_price:    Faker::Commerce.price(range: 8000..400000)
     )
 
     puts "Invald aircraft #{aircraft['Name']}" unless create_aircraft&.valid?
