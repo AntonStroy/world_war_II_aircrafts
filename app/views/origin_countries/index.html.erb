@@ -1,2 +1,7 @@
-<h1>OriginCountries#index</h1>
-<p>Find me in app/views/origin_countries/index.html.erb</p>
+<h2 class="title is-2">Countries</h2>
+
+<ol class="ml-5">
+  <% @origin_countries.each do |country| %>
+  <li><%= link_to country.name, country %></li>
+  <% end %>
+</ol>
