@@ -1,2 +1,10 @@
-<h2 class="title is-2"><%= @origin_countries.name %></h2>
+<h2 class="title is-2"><%= @origin_countries.name %> made <%= @origin_countries.aircrafts.count %> aircrafts.</h2>
 
+
+<div class="content">
+  <ul>
+    <% @origin_countries.aircrafts.each do |aircraft| %>
+      <li><%= link_to aircraft.name, aircraft %></li>
+    <% end %>
+  </ul>
+</div>
