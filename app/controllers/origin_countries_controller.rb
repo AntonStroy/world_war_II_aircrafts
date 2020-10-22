@@ -4,6 +4,6 @@ class OriginCountriesController < ApplicationController
   end
 
   def show
-    @origin_countries = OriginCountry.find(params[:id])
+    @origin_country = OriginCountry.find(params[:id])
   end
 end

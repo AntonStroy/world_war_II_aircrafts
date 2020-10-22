@@ -1,9 +1,10 @@
-<h2 class="title is-2"><%= @origin_countries.name %> made <%= @origin_countries.aircrafts.count %> aircrafts.</h2>
+<% content_for(:html_title) { @origin_country.name} %>
+<h2 class="title is-2"><%= @origin_country.name %> made <%= @origin_country.aircrafts.count %> aircrafts.</h2>
 
 
 <div class="content">
   <ul>
-    <% @origin_countries.aircrafts.each do |aircraft| %>
+    <% @origin_country.aircrafts.each do |aircraft| %>
       <li><%= link_to aircraft.name, aircraft %></li>
     <% end %>
   </ul>
