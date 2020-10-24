@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="columns">
+  <div class="column">
+  <h2 class="title is-2">Most Produced Aircrafts</h2>
+    <ol class="ml-5">
+      <%  @aircrafts.each do |aircraft| %>
+        <li>
+          <%= link_to aircraft.name, aircraft %>
+          <em>(<%= aircraft.origin_country.name %>)</em>
+          <% end %>
+        </li>
+    </ol>
+
+  </div>
+  <div class="column">
+   <h2 class="title is-2">Countires with most aircraft types</h2>
+<ol class="ml-5">
+  <% @origin_countries.each do |country| %>
+  <li><%= link_to country.name, country %>
+      <em>(<%= pluralize country.aircraft_count, "aircraft type" %>)</em>
+  </li>
+  <% end %>
+</ol>
+  </div>
+</div>

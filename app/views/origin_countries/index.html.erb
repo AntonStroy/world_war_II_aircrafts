@@ -2,6 +2,8 @@
 
 <ol class="ml-5">
   <% @origin_countries.each do |country| %>
-  <li><%= link_to country.name, country %></li>
+  <li><%= link_to country.name, country %>
+      <em>(<%= pluralize country.aircraft_count, "aircraft type" %>)</em>
+  </li>
   <% end %>
 </ol>

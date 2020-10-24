@@ -1,6 +1,6 @@
 class OriginCountriesController < ApplicationController
   def index
-    @origin_countries = OriginCountry.all
+    @origin_countries = OriginCountry.orderd_by_aircrafts
   end
 
   def show
