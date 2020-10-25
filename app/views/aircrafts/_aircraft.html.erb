@@ -1,0 +1,45 @@
+<h2 class="title is-2">
+  <% if show_link %>
+    <%= link_to aircraft.name, aircraft %>
+  <% else %>
+    <%= aircraft.name  %>
+  <% end %>
+</h2>
+
+<p>
+  <strong>Type:</strong>
+  <%= aircraft.aircraft_type %>
+</p>
+
+<p>
+  <strong>Sub-type:</strong>
+  <p> N/A </p>
+</p>
+
+<p>
+  <strong>Started service at:</strong>
+  <%= aircraft.service_start %>
+</p>
+
+<p>
+  <strong>Units build:</strong>
+  <%= aircraft.units_build %>
+</p>
+
+<p>
+  <strong>Unit Cost:</strong>
+  <%= aircraft.unit_price %>$
+</p>
+
+<p>
+  <strong>country of origin:</strong>
+  <%= link_to aircraft.origin_country.name, aircraft.origin_country %>
+</p>
+
+<p>
+  <strong>Operators:</strong>
+  <p> N/A </p>
+</p>
+
+<hr>
+
