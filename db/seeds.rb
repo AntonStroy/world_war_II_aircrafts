@@ -9,6 +9,8 @@
 require "csv"
 require "faker"
 
+AircraftSubtype.delete_all
+Subtype.delete_all
 Aircraft.delete_all
 OriginCountry.delete_all
 Page.delete_all
@@ -28,23 +30,35 @@ puts "Loading aircrafts from the CSV file: #{filename}"
 csv_data = File.read(filename)
 aircrafts = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 
-aircrafts.each do |aircraft|
-  origin_country = OriginCountry.find_or_create_by(name: aircraft["Origin_Country"])
+aircrafts.each do |a|
+  origin_country = OriginCountry.find_or_create_by(name: a["Origin_Country"])
 
   if origin_country&.valid?
-    create_aircraft = origin_country.aircrafts.create(
-      name:          aircraft["Name"],
-      aircraft_type: aircraft["Aircraft_Type"],
-      service_start: aircraft["Year_Service"],
+    aircraft = origin_country.aircrafts.create(
+      name:          a["Name"],
+      aircraft_type: a["Aircraft_Type"],
+      service_start: a["Year_Service"],
       units_build:   Faker::Number.between(from: 1, to: 3500),
       unit_price:    Faker::Commerce.price(range: 8000..400_000)
     )
 
-    puts "Invald aircraft #{aircraft['Name']}" unless create_aircraft&.valid?
+    unless aircraft&.valid?
+      puts "Invalid aircraft #{a['Name']}"
+      next
+    end
+
+    subtypes = a["Subtype"].split(",").map(&:strip)
+    subtypes.each do |s|
+      subtype = Subtype.find_or_create_by(name: s)
+      AircraftSubtype.create(aircraft: aircraft, subtype: subtype)
+    end
+
   else
-    puts "Invalid origin country #{aircraft['Origin_Country']} for aircraft #{aircraft['Name']}."
+    puts "Invalid origin country #{a['Origin_Country']} for aircraft #{a['Name']}."
   end
 end
 
 puts "Created #{OriginCountry.count} contries of origin"
 puts "Created #{Aircraft.count} Aircrafts"
+puts "Created #{Subtype.count} Subtypes"
+puts "Created #{AircraftSubtype.count} Aircraft Subtypes"
