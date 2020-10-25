@@ -16,12 +16,7 @@
   <div class="column">
     <h2 class="title is-2">Countires with most aircraft types</h2>
       <ol class="ml-5">
-        <% @origin_countries.each do |country| %>
-          <li>
-            <%= link_to country.name, country %>
-            <em>(<%= pluralize country.aircraft_count, "aircraft type" %>)</em>
-          </li>
-        <% end %>
+        <%= render @origin_countries %>
       </ol>
       <p class="mt-5"><strong><%= link_to 'List of all Countries', origin_countries_path %></strong></p>
   </div>
