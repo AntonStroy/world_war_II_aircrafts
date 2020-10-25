@@ -11,6 +11,15 @@ require "faker"
 
 Aircraft.delete_all
 OriginCountry.delete_all
+Page.delete_all
+
+Page.create(title:     "About the Data",
+            content:   "The web site contains all aircrafts that were produced in the period of world war II",
+            permalink: "about_the_data")
+
+Page.create(title:     "Contact Us",
+            content:   "If you find that this list is missing information about world war II aircrafts please contact at jimhawkins@aircrafts.com",
+            permalink: "contact_us")
 
 filename = Rails.root.join("db/aircrafts.csv")
 
@@ -28,7 +37,7 @@ aircrafts.each do |aircraft|
       aircraft_type: aircraft["Aircraft_Type"],
       service_start: aircraft["Year_Service"],
       units_build:   Faker::Number.between(from: 1, to: 3500),
-      unit_price:    Faker::Commerce.price(range: 8000..400000)
+      unit_price:    Faker::Commerce.price(range: 8000..400_000)
     )
 
     puts "Invald aircraft #{aircraft['Name']}" unless create_aircraft&.valid?
