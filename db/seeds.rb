@@ -9,6 +9,8 @@
 require "csv"
 require "faker"
 
+AircraftOperator.delete_all
+Operator.delete_all
 AircraftSubtype.delete_all
 Subtype.delete_all
 Aircraft.delete_all
@@ -53,6 +55,12 @@ aircrafts.each do |a|
       AircraftSubtype.create(aircraft: aircraft, subtype: subtype)
     end
 
+    operators = a["Operator"].split(",").map(&:strip)
+    operators.each do |o|
+      operator = Operator.find_or_create_by(name: o)
+      AircraftOperator.create(aircraft: aircraft, operator: operator)
+    end
+
   else
     puts "Invalid origin country #{a['Origin_Country']} for aircraft #{a['Name']}."
   end
@@ -62,3 +70,5 @@ puts "Created #{OriginCountry.count} contries of origin"
 puts "Created #{Aircraft.count} Aircrafts"
 puts "Created #{Subtype.count} Subtypes"
 puts "Created #{AircraftSubtype.count} Aircraft Subtypes"
+puts "Created #{Operator.count} Operators"
+puts "Created #{AircraftOperator.count} Aircraft Operators"
