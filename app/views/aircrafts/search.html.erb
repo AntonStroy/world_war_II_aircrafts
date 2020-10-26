@@ -1,0 +1,7 @@
+<p class="mb-5">Found <%= pluralize(@aircrafts.count, 'Aircraft') %> when searching for: <%= params[:keywords]%></p>
+
+<ul>
+  <% @aircrafts.each do |aircraft| %>
+    <li><%= link_to aircraft.name, aircraft %></li>
+    <% end %>
+</ul>
