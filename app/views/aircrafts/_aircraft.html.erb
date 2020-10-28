@@ -13,7 +13,14 @@
 
 <p>
   <strong>Sub-types:</strong>
-  <%= aircraft.subtype_list %>
+  <% countSubtypes = aircraft.subtypes.count %>
+  <% aircraft.subtypes.each do |s| %>
+    <% if countSubtypes > 1 %>
+    <%= link_to s.name, subtype_path(s)%>,
+    <% else %>
+    <%= link_to s.name, subtype_path(s)%>
+    <% end %>
+  <% end %>
 </p>
 
 <p>
@@ -40,9 +47,10 @@
   <strong>Operators:</strong>
   <% countOperators = aircraft.operators.count %>
   <% aircraft.operators.each do |o| %>
-    <%= link_to o.name, operator_path(o)%>
     <% if countOperators > 1 %>
-    ,
+    <%= link_to o.name, operator_path(o)%>,
+    <% else %>
+    <%= link_to o.name, operator_path(o)%>
     <% end %>
   <% end %>
 </p>

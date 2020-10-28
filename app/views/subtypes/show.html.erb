@@ -1,0 +1,14 @@
+<% content_for(:html_title) { @subtype.name} %>
+<h2 class="title is-2">Subtype of <%= @subtype.name %> include <%= @subtype.aircrafts.count %> aircrafts types.</h2>
+
+
+<div class="content">
+  <ul>
+    <% @subtype.aircrafts.each do |subtype| %>
+      <li>
+      <%= link_to subtype.name, subtype %>
+
+      </li>
+    <% end %>
+  </ul>
+</div>

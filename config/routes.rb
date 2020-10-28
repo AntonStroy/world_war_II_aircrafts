@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  # get 'subtype/index'
+  # get 'subtype/show'
   # get 'operators/index'
   # get 'operators/show'
+
+  resources :subtypes, only: %i[index show]
 
   resources :operators, only: %i[index show]
 

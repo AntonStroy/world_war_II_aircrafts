@@ -8,6 +8,7 @@
     <li><%= link_to 'List of all aircrafts', aircrafts_path %></li>
     <li><%= link_to 'List of all origin countries', origin_countries_path %></li>
     <li><%= link_to 'List of all operators', operators_path %></li>
+    <li><%= link_to 'List of all Subtypes', subtypes_path %></li>
     <% cms_pages.each do |page| %>
       <li><%= link_to page.title, permalink_path(page.permalink) %></li>
     <% end %>

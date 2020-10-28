@@ -1,0 +1,9 @@
+<h2 class="title is-2">Subtypes</h2>
+
+<ul class="ml-5">
+<% @subtypes.each do |subtype| %>
+    <li>
+      <%= link_to subtype.name, subtype %>
+    </li>
+  <% end %>
+</ul>
