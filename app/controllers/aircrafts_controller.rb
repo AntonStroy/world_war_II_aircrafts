@@ -1,6 +1,6 @@
 class AircraftsController < ApplicationController
   def index
-    @aircrafts = Aircraft.includes(:origin_country).order("name")
+    @aircrafts = Aircraft.includes(:origin_country).order("name").page(params[:page])
   end
 
   def show

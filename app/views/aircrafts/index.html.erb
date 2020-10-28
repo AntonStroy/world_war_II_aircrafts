@@ -1,3 +1,5 @@
 <h2 class="title is-2">World War II Aircrafts</h2>
 
+<%= paginate @aircrafts%>
 <%= render partial: 'aircraft', collection: @aircrafts, locals: {show_link: true} %>
+<%= paginate @aircrafts%>
