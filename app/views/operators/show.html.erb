@@ -1,0 +1,14 @@
+<% content_for(:html_title) { @operator.name} %>
+<h2 class="title is-2"><%= @operator.name %> operated <%= @operator.aircrafts.count %> aircrafts types.</h2>
+
+
+<div class="content">
+  <ul>
+    <% @operator.aircrafts.each do |aircraft| %>
+      <li>
+      <%= link_to aircraft.name, aircraft %>
+      <em>(<%= aircraft.origin_country.name %>)</em>
+      </li>
+    <% end %>
+  </ul>
+</div>

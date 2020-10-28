@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # get 'operators/index'
+  # get 'operators/show'
+
+  resources :operators, only: %i[index show]
+
   resources :pages, except: [:show]
 
   get "/pages/:permalink" => "pages#permalink", as: :permalink

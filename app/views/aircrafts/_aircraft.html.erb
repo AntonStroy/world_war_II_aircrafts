@@ -38,7 +38,13 @@
 
 <p>
   <strong>Operators:</strong>
-  <%= aircraft.operator_list %>
+  <% countOperators = aircraft.operators.count %>
+  <% aircraft.operators.each do |o| %>
+    <%= link_to o.name, operator_path(o)%>
+    <% if countOperators > 1 %>
+    ,
+    <% end %>
+  <% end %>
 </p>
 
 <hr>

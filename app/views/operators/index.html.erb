@@ -1,0 +1,9 @@
+<h2 class="title is-2">Operators</h2>
+
+<ul class="ml-5">
+<% @operators.each do |operator| %>
+    <li>
+      <%= link_to operator.name, operator %>
+    </li>
+  <% end %>
+</ul>
